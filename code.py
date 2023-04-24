@@ -26,3 +26,7 @@ def gravar():
     cursor.execute('insert into tbl_user (user_name, user_username, user_password) VALUES (%s, %s, %s)', (nome, email, senha))
     conn.commit()
   return render_template('pratica.html')
+  
+  if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5008))
+    app.run(host='0.0.0.0', port=port)
