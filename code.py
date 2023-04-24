@@ -13,7 +13,7 @@ mysql.init_app(app)
 
 @app.route('/')
 def main():
-    return render_template('aulamvc.html')
+    return render_template('pratica.html')
 
 @app.route('/gravar', methods=['POST','GET'])
 def gravar():
@@ -25,7 +25,7 @@ def gravar():
     cursor = conn.cursor()
     cursor.execute('insert into tbl_user (user_name, user_username, user_password) VALUES (%s, %s, %s)', (nome, email, senha))
     conn.commit()
-  return render_template('aulamvc.html')
+  return render_template('pratica.html')
   
   if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5001))
