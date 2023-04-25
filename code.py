@@ -24,7 +24,7 @@ def gravar():
   if nome and email and senha:
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute('insert into tbl_user (nome, email, senha) VALUES (%s, %s, %s)', (nome, email, senha))
+    cursor.execute('insert into users (nome, email, senha) VALUES (%s, %s, %s)', (nome, email, senha))
     conn.commit()
   return render_template('pratica.html')
 
