@@ -1,10 +1,11 @@
 import os
-from flask import Flask, render_template,request
+from flask import Flask, render_template, request
 from flaskext.mysql import MySQL
 
 mysql = MySQL()
 app = Flask(__name__)
 
+# MySQL configurations
 app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'mudar123'
 app.config['MYSQL_DATABASE_DB'] = 'teste'
@@ -23,10 +24,13 @@ def gravar():
   if nome and email and senha:
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute('insert into tbl_user (user_name, user_username, user_password) VALUES (%s, %s, %s)', (nome, email, senha))
+    cursor.execute('insert into tbl_user (nome, email, senha) VALUES (%s, %s, %s)', (nome, email, senha))
     conn.commit()
   return render_template('pratica.html')
-  
-  if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5001))
-    app.run(host='0.0.0.0', port=5001)
+
+
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5008))
+    app.run(host='0.0.0.0', port=port)
