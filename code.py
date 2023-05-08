@@ -24,7 +24,7 @@ def gravar():
   if nome and email and senha:
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute('insert into users (nome, email, senha) VALUES (%s, %s, %s)', (nome, email, senha))
+    cursor.execute('insert into tbl_user ( user_name, user_username, user_password ) VALUES (%s, %s, %s)', (nome, email, senha))
     conn.commit()
   return render_template('pratica.html')
 
@@ -32,5 +32,5 @@ def gravar():
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5008))
+    port = int(os.environ.get("PORT", 5050))
     app.run(host='0.0.0.0', port=port)
